@@ -33,8 +33,10 @@ function Auth0({ children }) {
             data: { idToken: claims.__raw },
           });
 
+          console.log(resp.data.result);
+
           if (!_.isEmpty(resp.data.result)) {
-            dispatch(exchangeToken(claims.__raw));
+            dispatch(exchangeToken(claims.__raw, resp.data.result));
           } else {
             dispatch(clearToken());
             auth0.logout();

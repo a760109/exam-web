@@ -1,9 +1,12 @@
 import { createSlice, createAction } from '@reduxjs/toolkit';
 
 export const exchangeToken = createAction('user/exchangeToken', (idToken, userData) => {
-  return {
+  const payload = {
+    ...userData,
     idToken,
-    userData,
+  };
+  return {
+    payload,
   };
 });
 
@@ -14,6 +17,7 @@ export const clearToken = createAction('user/clearToken', () => {
 
 const initialState = {
   isAuthenticated: false,
+  userData: {},
 };
 
 const userSlice = createSlice({
@@ -23,7 +27,7 @@ const userSlice = createSlice({
     [exchangeToken]: (state, action) => {
       return {
         ...state,
-        ...action.payload,
+        userData: action.payload,
         isAuthenticated: true,
       };
     },
