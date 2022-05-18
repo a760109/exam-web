@@ -10,11 +10,12 @@ const local = {
 
 const prod = {
   auth0,
-  apiBaseURL: 'http://localhost:8443/ams/v1',
+  apiBaseURL: 'https://a760109.goportal.one/exam/v1',
 };
 
 const hostnameToConfig = {
   localhost: local,
+  prod,
 };
 
 let config = hostnameToConfig[process.env.REACT_APP_HOSTNAME || window.location.hostname];
