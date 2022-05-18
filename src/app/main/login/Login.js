@@ -22,7 +22,14 @@ export default function Login() {
         <TextField disabled label='Name' value={userData.name} variant='outlined' />
         <TextField disabled label='Number of times logged in' value={userData.times} variant='outlined' />
       </Box>
-      <Button variant='contained' onClick={logout}>
+      <Button
+        variant='contained'
+        onClick={() => {
+          logout({
+            returnTo: `${window.location.origin}`,
+          });
+        }}
+      >
         Logout
       </Button>
     </div>
